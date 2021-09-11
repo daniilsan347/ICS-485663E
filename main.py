@@ -1,17 +1,23 @@
+#pip install pyexcel
+#pip install pyexcel-ods
+#pip install pyexcel-xlsx
+#pip install pyexcel-text
+
 import pyexcel as pe
 
-pricesTable = pe.get_array(file_name="./table1.ods")
-goodsTable = pe.get_array(file_name="./table2.ods")
+pricesTable = pe.get_array(file_name = "./table1.ods")
+goodsTable = pe.get_array(file_name = "./table2.ods")
 
 pe.free_resources()
 
 prices = []
-goods = {}
 
 for row in pricesTable:
   if type(row[0]) == str:
     continue
   prices.append(dict({'id':row[0], 'avg':round(sum(row[1:4])/4, 2), 'year':row[5]})) 
+
+goods = {}
 
 for row in goodsTable:
   if type(row[0]) == str:
