@@ -44,12 +44,22 @@ print(resultRender.orgtbl)
 print('\n')
 
 while True:
-
-  user_input = input('Зберегти у файл *.xlsx ? [Y/N] ')
-
-  if user_input.lower() == 'y':
-    user_input = input('Назва файлу: ')
-    pe.save_as(array = resultTable, dest_file_name = user_input + '.xlsx')
+  user_input = input('Зберігати у файл? [Y/N] ')
+  if user_input.lower() == 'n':
     break
-  elif user_input.lower() == 'n':
-    break
+  elif user_input.lower() == 'y':
+    fileName = input('Назва файлу: ')
+    print('Оберіть формат:')
+    print('OpenDocument Sheet [ODS]')
+    print('MS Excel 2007-365 [XLSX]')
+    print('Скасувати [N]')
+    user_input = input('> ')
+
+    if user_input.lower() == 'ods':
+      pe.save_as(array = resultTable, dest_file_name = fileName + '.ods')
+      break
+    elif user_input.lower() == 'xlsx':
+      pe.save_as(array = resultTable, dest_file_name = fileName + '.xlsx')
+      break
+    elif user_input.lower() == 'n':
+      break
