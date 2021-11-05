@@ -21,7 +21,7 @@ class Product:
         self.marketPriceAvg = sum(self.marketPrices) / 4
         self.year = prodArr[5]
 
-    def findBaseProd(baseProdTable):
+    def findBaseProd(self, baseProdTable):
         for row in baseProdTable:
             if row[0] == self.prodID:
                 self.name = row[1]
